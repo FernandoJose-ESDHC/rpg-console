@@ -43,6 +43,14 @@ RPG em modo console, escrito em **Java**. O jogador escolhe uma classe de herói
 
 **Requisito:** JDK 17 ou superior (testado com OpenJDK 21). Verifique com `java -version`.
 
+### Jeito mais fácil
+1. Baixe o projeto (**Code → Download ZIP** nesta página) e extraia o arquivo.
+2. **Windows:** dê dois cliques em **`jogar.bat`**. **Linux/macOS:** rode `./jogar.sh` no terminal.
+
+O script compila o jogo na primeira vez e abre o console pronto para jogar.
+
+### Pelo terminal
+
 Os mesmos comandos funcionam no **Windows** (cmd ou PowerShell), no **Linux** e no **macOS**:
 
 ```bash
@@ -116,6 +124,7 @@ rpg-console/
 ├── docs/
 │   ├── diagrama-classes.png / .svg / .dot
 │   └── prints/                   # capturas de tela da execução
+├── jogar.bat / jogar.sh        # abrem o jogo com dois cliques / um comando
 ├── apresentacao.pptx
 └── documentacao.pdf
 ```
