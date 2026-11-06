@@ -46,8 +46,8 @@ RPG em modo console, escrito em **Java**. O jogador escolhe uma classe de herói
 Os mesmos comandos funcionam no **Windows** (cmd ou PowerShell), no **Linux** e no **macOS**:
 
 ```bash
-git clone https://github.com/FernandoJose-ESDHC/rpg-console-poo.git
-cd rpg-console-poo
+git clone https://github.com/FernandoJose-ESDHC/rpg-console.git
+cd rpg-console
 javac -encoding UTF-8 -d out -sourcepath src src/Main.java
 java -cp out Main
 ```
@@ -82,7 +82,7 @@ java -cp out TesteRegras
 ## Estrutura do projeto
 
 ```
-rpg-console-poo/
+rpg-console/
 ├── src/
 │   ├── Main.java                 # ponto de entrada: monta e injeta as dependências
 │   ├── personagens/
