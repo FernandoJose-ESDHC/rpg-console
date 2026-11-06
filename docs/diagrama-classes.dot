@@ -1,0 +1,85 @@
+digraph UML {
+rankdir=BT; nodesep=0.35; ranksep=0.7; newrank=true;
+node [shape=plaintext fontname="DejaVu Sans" fontsize=10];
+edge [fontname="DejaVu Sans" fontsize=9];
+label="Diagrama de Classes - RPG de Console (POO + SOLID)"; labelloc=t; fontsize=18; fontname="DejaVu Sans Bold";
+subgraph cluster_0 { label="pacote personagens"; style="rounded,dashed"; color="#888888"; fontsize=12; fontname="DejaVu Sans";
+"Combatente" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#e8f0fe"><TR><TD><FONT POINT-SIZE="9">«interface»</FONT><BR/><I><B>Combatente</B></I></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ getNome(): String<BR ALIGN='LEFT'/>+ getVida(): int<BR ALIGN='LEFT'/>+ getVidaMaxima(): int<BR ALIGN='LEFT'/>+ getAtaque(): int<BR ALIGN='LEFT'/>+ getDefesa(): int<BR ALIGN='LEFT'/>+ estaVivo(): boolean<BR ALIGN='LEFT'/>+ receberDano(dano: int): void<BR ALIGN='LEFT'/>+ atacar(alvo: Combatente, calc: CalculadoraDeDano): String<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Curavel" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#e8f0fe"><TR><TD><FONT POINT-SIZE="9">«interface»</FONT><BR/><I><B>Curavel</B></I></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ curar(quantidade: int): int<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"UsaHabilidade" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#e8f0fe"><TR><TD><FONT POINT-SIZE="9">«interface»</FONT><BR/><I><B>UsaHabilidade</B></I></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ getNomeHabilidade(): String<BR ALIGN='LEFT'/>+ getRecargaRestante(): int<BR ALIGN='LEFT'/>+ habilidadePronta(): boolean<BR ALIGN='LEFT'/>+ usarHabilidade(alvo, calc): String<BR ALIGN='LEFT'/>+ avancarTurno(): void<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Personagem" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#fff4e5"><TR><TD><I><B>Personagem</B></I><BR/><FONT POINT-SIZE="9">{abstract}</FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">- nome: String<BR ALIGN='LEFT'/>- vidaMaxima: int<BR ALIGN='LEFT'/>- vida: int<BR ALIGN='LEFT'/>- ataque: int<BR ALIGN='LEFT'/>- defesa: int<BR ALIGN='LEFT'/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ (métodos de Combatente)<BR ALIGN='LEFT'/># definirVida(novaVida: int): void<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Heroi" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#fff4e5"><TR><TD><I><B>Heroi</B></I><BR/><FONT POINT-SIZE="9">{abstract}</FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">- inventario: Inventario<BR ALIGN='LEFT'/>- arma: Arma<BR ALIGN='LEFT'/>- armadura: Armadura<BR ALIGN='LEFT'/>- nomeHabilidade: String<BR ALIGN='LEFT'/>- recargaMaxima: int<BR ALIGN='LEFT'/>- recargaRestante: int<BR ALIGN='LEFT'/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ getClasse(): String {abstract}<BR ALIGN='LEFT'/># executarHabilidade(alvo, calc): String {abstract}<BR ALIGN='LEFT'/>+ getAtaque(): int<BR ALIGN='LEFT'/>+ getDefesa(): int<BR ALIGN='LEFT'/>+ curar(quantidade: int): int<BR ALIGN='LEFT'/>+ getNomeHabilidade(): String<BR ALIGN='LEFT'/>+ getRecargaRestante(): int<BR ALIGN='LEFT'/>+ habilidadePronta(): boolean<BR ALIGN='LEFT'/>+ usarHabilidade(alvo, calc): String<BR ALIGN='LEFT'/>+ avancarTurno(): void<BR ALIGN='LEFT'/>+ getInventario(): Inventario<BR ALIGN='LEFT'/>+ getArma(): Arma<BR ALIGN='LEFT'/>+ getArmadura(): Armadura<BR ALIGN='LEFT'/>+ equiparArma(a: Arma): Arma<BR ALIGN='LEFT'/>+ equiparArmadura(a: Armadura): Armadura<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Guerreiro" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Guerreiro</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ getClasse(): String<BR ALIGN='LEFT'/># executarHabilidade(alvo, calc): String<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Mago" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Mago</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ getClasse(): String<BR ALIGN='LEFT'/># executarHabilidade(alvo, calc): String<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Arqueiro" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Arqueiro</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ getClasse(): String<BR ALIGN='LEFT'/># executarHabilidade(alvo, calc): String<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Inimigo" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#fff4e5"><TR><TD><I><B>Inimigo</B></I><BR/><FONT POINT-SIZE="9">{abstract}</FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">- recompensa: Item<BR ALIGN='LEFT'/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ agir(alvo: Combatente, calc): String<BR ALIGN='LEFT'/>+ getRecompensa(): Item<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Goblin" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Goblin</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ Goblin(recompensa: Item)<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Esqueleto" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Esqueleto</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ Esqueleto(recompensa: Item)<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"ChefeDragao" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>ChefeDragao</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">- RECARGA_SOPRO: int = 3<BR ALIGN='LEFT'/>- recargaRestante: int<BR ALIGN='LEFT'/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ agir(alvo, calc): String<BR ALIGN='LEFT'/>+ getNomeHabilidade(): String<BR ALIGN='LEFT'/>+ getRecargaRestante(): int<BR ALIGN='LEFT'/>+ habilidadePronta(): boolean<BR ALIGN='LEFT'/>+ usarHabilidade(alvo, calc): String<BR ALIGN='LEFT'/>+ avancarTurno(): void<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+}
+subgraph cluster_1 { label="pacote itens"; style="rounded,dashed"; color="#888888"; fontsize=12; fontname="DejaVu Sans";
+"Item" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#e8f0fe"><TR><TD><FONT POINT-SIZE="9">«interface»</FONT><BR/><I><B>Item</B></I></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ getNome(): String<BR ALIGN='LEFT'/>+ getDescricao(): String<BR ALIGN='LEFT'/>+ usar(heroi: Heroi): String<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"PocaoDeCura" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>PocaoDeCura</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">- nome: String<BR ALIGN='LEFT'/>- quantidade: int<BR ALIGN='LEFT'/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ getNome(): String<BR ALIGN='LEFT'/>+ getDescricao(): String<BR ALIGN='LEFT'/>+ usar(heroi: Heroi): String<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Equipamento" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#fff4e5"><TR><TD><I><B>Equipamento</B></I><BR/><FONT POINT-SIZE="9">{abstract}</FONT></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">- nome: String<BR ALIGN='LEFT'/>- bonus: int<BR ALIGN='LEFT'/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ getNome(): String<BR ALIGN='LEFT'/>+ getBonus(): int<BR ALIGN='LEFT'/>+ usar(heroi: Heroi): String<BR ALIGN='LEFT'/># equiparEm(heroi: Heroi): Equipamento {abstract}<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Arma" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Arma</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ getDescricao(): String<BR ALIGN='LEFT'/># equiparEm(heroi: Heroi): Equipamento<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Armadura" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Armadura</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ getDescricao(): String<BR ALIGN='LEFT'/># equiparEm(heroi: Heroi): Equipamento<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Inventario" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Inventario</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">- itens: List&lt;Item&gt;<BR ALIGN='LEFT'/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ adicionar(item: Item): void<BR ALIGN='LEFT'/>+ estaVazio(): boolean<BR ALIGN='LEFT'/>+ quantidade(): int<BR ALIGN='LEFT'/>+ getItens(): List&lt;Item&gt;<BR ALIGN='LEFT'/>+ usarItem(indice: int, heroi: Heroi): String<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+}
+subgraph cluster_2 { label="pacote combate"; style="rounded,dashed"; color="#888888"; fontsize=12; fontname="DejaVu Sans";
+"CalculadoraDeDano" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#e8f0fe"><TR><TD><FONT POINT-SIZE="9">«interface»</FONT><BR/><I><B>CalculadoraDeDano</B></I></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ calcular(ataque: int, defesa: int): int<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"CalculadoraPadrao" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>CalculadoraPadrao</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">- random: Random<BR ALIGN='LEFT'/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ calcular(ataque: int, defesa: int): int<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Batalha" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Batalha</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">- heroi: Heroi<BR ALIGN='LEFT'/>- inimigo: Inimigo<BR ALIGN='LEFT'/>- io: EntradaSaida<BR ALIGN='LEFT'/>- calculadora: CalculadoraDeDano<BR ALIGN='LEFT'/>- menuDeInventario: MenuDeInventario<BR ALIGN='LEFT'/>- rodada: int<BR ALIGN='LEFT'/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ executar(): boolean<BR ALIGN='LEFT'/>- mostrarStatus(): void<BR ALIGN='LEFT'/>- turnoDoHeroi(): void<BR ALIGN='LEFT'/>- textoDaRecarga(): String<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+}
+subgraph cluster_3 { label="pacote ui"; style="rounded,dashed"; color="#888888"; fontsize=12; fontname="DejaVu Sans";
+"EntradaSaida" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#e8f0fe"><TR><TD><FONT POINT-SIZE="9">«interface»</FONT><BR/><I><B>EntradaSaida</B></I></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ mostrar(texto: String): void<BR ALIGN='LEFT'/>+ lerOpcao(pergunta, min, max): int<BR ALIGN='LEFT'/>+ lerTexto(pergunta: String): String<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Console" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Console</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">- scanner: Scanner<BR ALIGN='LEFT'/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ mostrar(texto: String): void<BR ALIGN='LEFT'/>+ lerOpcao(pergunta, min, max): int<BR ALIGN='LEFT'/>+ lerTexto(pergunta: String): String<BR ALIGN='LEFT'/>- lerLinha(): String<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"MenuDeInventario" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>MenuDeInventario</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">- io: EntradaSaida<BR ALIGN='LEFT'/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ abrir(heroi: Heroi): boolean<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+"Formatador" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Formatador</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ barraDeVida(vida, vidaMaxima): String {static}<BR ALIGN='LEFT'/>+ linhaDeStatus(titulo, c: Combatente): String {static}<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+}
+subgraph cluster_4 { label="pacote jogo"; style="rounded,dashed"; color="#888888"; fontsize=12; fontname="DejaVu Sans";
+"Jogo" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Jogo</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">- io: EntradaSaida<BR ALIGN='LEFT'/>- calculadora: CalculadoraDeDano<BR ALIGN='LEFT'/>- inimigos: List&lt;Inimigo&gt;<BR ALIGN='LEFT'/>- menuDeInventario: MenuDeInventario<BR ALIGN='LEFT'/></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ iniciar(): void<BR ALIGN='LEFT'/>- criarHeroi(): Heroi<BR ALIGN='LEFT'/>- darItensIniciais(h: Heroi): void<BR ALIGN='LEFT'/>- receberRecompensa(h, i): void<BR ALIGN='LEFT'/>- acampamento(h: Heroi): void<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+}
+subgraph cluster_5 { label="pacote (raiz)"; style="rounded,dashed"; color="#888888"; fontsize=12; fontname="DejaVu Sans";
+"Main" [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#ffffff"><TR><TD><B>Main</B></TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT"> </TD></TR><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ main(args: String[]): void {static}<BR ALIGN='LEFT'/></TD></TR></TABLE>>];
+}
+"Heroi" -> "Personagem" [arrowhead=onormal arrowsize=1.2];
+"Inimigo" -> "Personagem" [arrowhead=onormal arrowsize=1.2];
+"Guerreiro" -> "Heroi" [arrowhead=onormal arrowsize=1.2];
+"Mago" -> "Heroi" [arrowhead=onormal arrowsize=1.2];
+"Arqueiro" -> "Heroi" [arrowhead=onormal arrowsize=1.2];
+"Goblin" -> "Inimigo" [arrowhead=onormal arrowsize=1.2];
+"Esqueleto" -> "Inimigo" [arrowhead=onormal arrowsize=1.2];
+"ChefeDragao" -> "Inimigo" [arrowhead=onormal arrowsize=1.2];
+"Arma" -> "Equipamento" [arrowhead=onormal arrowsize=1.2];
+"Armadura" -> "Equipamento" [arrowhead=onormal arrowsize=1.2];
+"Personagem" -> "Combatente" [arrowhead=onormal style=dashed arrowsize=1.2];
+"Heroi" -> "Curavel" [arrowhead=onormal style=dashed arrowsize=1.2];
+"Heroi" -> "UsaHabilidade" [arrowhead=onormal style=dashed arrowsize=1.2];
+"ChefeDragao" -> "UsaHabilidade" [arrowhead=onormal style=dashed arrowsize=1.2];
+"PocaoDeCura" -> "Item" [arrowhead=onormal style=dashed arrowsize=1.2];
+"Equipamento" -> "Item" [arrowhead=onormal style=dashed arrowsize=1.2];
+"CalculadoraPadrao" -> "CalculadoraDeDano" [arrowhead=onormal style=dashed arrowsize=1.2];
+"Console" -> "EntradaSaida" [arrowhead=onormal style=dashed arrowsize=1.2];
+"Inventario" -> "Heroi" [dir=back arrowtail=diamond headlabel="1" constraint=false];
+"MenuDeInventario" -> "Batalha" [dir=back arrowtail=diamond headlabel="1" constraint=false];
+"MenuDeInventario" -> "Jogo" [dir=back arrowtail=diamond headlabel="1" constraint=false];
+"Arma" -> "Heroi" [dir=back arrowtail=odiamond headlabel="0..1" constraint=false];
+"Armadura" -> "Heroi" [dir=back arrowtail=odiamond headlabel="0..1" constraint=false];
+"Item" -> "Inventario" [dir=back arrowtail=odiamond headlabel="0..*" constraint=false];
+"Item" -> "Inimigo" [dir=back arrowtail=odiamond headlabel="recompensa 0..1" constraint=false];
+"Inimigo" -> "Jogo" [dir=back arrowtail=odiamond headlabel="1..*" constraint=false];
+"Batalha" -> "Heroi" [arrowhead=vee color="#555555"];
+"Batalha" -> "Inimigo" [arrowhead=vee color="#555555"];
+"Batalha" -> "EntradaSaida" [arrowhead=vee color="#555555"];
+"Batalha" -> "CalculadoraDeDano" [arrowhead=vee color="#555555"];
+"Jogo" -> "EntradaSaida" [arrowhead=vee color="#555555"];
+"Jogo" -> "CalculadoraDeDano" [arrowhead=vee color="#555555"];
+"MenuDeInventario" -> "EntradaSaida" [arrowhead=vee color="#555555"];
+"Jogo" -> "Batalha" [arrowhead=vee style=dashed color="#777777" label="«cria»"];
+"Main" -> "Jogo" [arrowhead=vee style=dashed color="#777777" label="«cria»"];
+"Main" -> "Console" [arrowhead=vee style=dashed color="#777777" label="«cria»"];
+"Main" -> "CalculadoraPadrao" [arrowhead=vee style=dashed color="#777777" label="«cria»"];
+"Combatente" -> "CalculadoraDeDano" [arrowhead=vee style=dashed color="#777777" label="«usa»"];
+"Batalha" -> "Formatador" [arrowhead=vee style=dashed color="#777777" label=""];
+"Jogo" -> "Formatador" [arrowhead=vee style=dashed color="#777777" label=""];
+}
